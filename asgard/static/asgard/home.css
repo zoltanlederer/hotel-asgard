@@ -1,0 +1,163 @@
+/* INDEX / HOME */
+
+/* Main Page Image */
+
+.main-img-container {
+    background-image: url("./img/slide1.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 20% 0;
+    letter-spacing: 7px;
+}
+
+.main-img-container h1,
+.main-img-container h2 {
+    color: #feec95;
+    text-transform: uppercase;
+    text-shadow: 3px 2px 1px rgba(0,0,0,0.6) !important;
+}
+
+.main-img-container h1 {
+    font-size: 5vw;
+}
+
+.main-img-container h2 {
+    font-size: 3vw;
+}
+
+.main-img-container-divider {
+    width: 20%;
+    border-bottom: 3px solid #feec95;
+    margin: 0 auto;
+    box-shadow: 3px 2px 1px rgba(0,0,0,0.6) !important;
+}
+
+.fa-star {
+    font-size: 2vw;
+}
+
+/* Hotel Rooms */
+.custom-main-hotel-rooms h1,
+.custom-main-hotel-availability h1 {    
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.custom-main-hotel-rooms h1 {
+    text-shadow: 4px 4px 6px rgba(0,0,0,0.6) !important;
+}
+
+.custom-main-hotel-rooms h5 a {    
+    font-size: 1rem;
+    letter-spacing: 1px;
+    color: #b48b2e;
+    text-decoration: none;
+}
+
+.custom-main-hotel-rooms h5 a:hover {
+    color: #b48c2ed3
+}
+
+.custom-main-hotel-rooms li {
+    width: 320px;
+}
+
+.custom-main-hotel-rooms img {
+    width: 320px;
+    transform: scale(1);
+    filter: brightness(100%);
+    transition: all .3s ease;
+}
+
+.custom-main-hotel-rooms img:hover {
+    filter: brightness(115%);
+    transform: scale(1.1);
+}
+
+@media (max-width: 1400px) {
+    .custom-main-hotel-rooms li,
+    .custom-main-hotel-rooms img {
+        width: 400px;
+    }
+}
+
+
+/* Check Availability */
+.custom-main-hotel-availability {
+    color: #999;
+    background-color: #f5f5f5;
+}
+
+.custom-main-hotel-availability [type="submit"] {
+    color: #fff;
+    background-color: #b48b2e !important;
+    font-weight: bold;
+}
+
+.custom-main-hotel-availability [type="submit"]:hover {
+    background-color: #b48c2ed3 !important;
+}
+
+.form-control {
+    color: #999;
+    background-color: #fff !important;
+}
+
+.input-group-text {
+    color: #999;
+    background-color: #fff;
+    border-left: none;
+}
+
+#input-checkin,
+#input-checkout {
+    border-right: none;
+}
+
+/* Gallery / Video Tour */
+.custom-main-hotel-gallery h5 {
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.custom-main-hotel-gallery p {
+    letter-spacing: .3px;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.custom-main-hotel-gallery-divider {
+    width: 64px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: #b48b2e;
+}
+
+.gallery-img {
+    width: 170px;
+}
+
+.gallery-modal-img {
+    width: 100%;
+}
+
+@media (max-width: 992px) {
+    .custom-main-hotel-gallery {
+        flex-direction: column;
+        justify-content: center;
+        justify-items: center;
+        align-content: center;
+    }
+    .custom-main-hotel-gallery .col-md-6 {
+        width: 90%;
+    }
+}
+
+@media (max-width: 576px) {
+    .gallery-img {
+        width: 100%;
+    }
+}

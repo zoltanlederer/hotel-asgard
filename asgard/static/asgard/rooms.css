@@ -1,0 +1,81 @@
+.custom-rooms-header {
+    background-image: url('./img/rooms00.jpg');
+    background-size: cover;
+    background-position-y: center;
+    background-repeat: no-repeat;
+    color: #fff;
+}
+
+.custom-rooms-header h1 {
+    text-transform: uppercase;
+    letter-spacing: 10px;
+    text-shadow: 3px 2px 1px rgba(0,0,0,0.6) !important;
+}
+
+.custom-rooms-main {
+    justify-content: space-around;
+}
+
+@media (max-width: 1199px) {
+    .custom-rooms-main {
+        justify-content: space-around;
+    }
+}
+
+@media (max-width: 991px) {
+    .custom-rooms-main {
+        justify-content: center;
+    }
+}
+
+.custom-rooms-box {
+    color: #808080;
+}
+
+.custom-rooms-box h1 {
+    font-size: 16px;
+    text-transform: uppercase;
+    border-bottom: 2px solid #e5e5e5;
+    letter-spacing: 1px;
+}
+
+.custom-rooms-box h1 a {
+    color: #b48b2e;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.custom-rooms-box-header {
+    position: relative;
+    overflow: hidden;
+}
+
+.custom-rooms-box-header img {
+    transform: scale(1);
+    filter: brightness(100%);
+    transition: all .3s ease;
+}
+
+.custom-rooms-box-header img:hover {
+    filter: brightness(115%);
+    transform: scale(1.1);
+}
+
+.custom-rooms-box h2 {
+    font-size: 19px;
+    letter-spacing: 1px;
+}
+
+.custom-rooms-box button {
+    color: #fff;
+    font-style: italic;
+    background-color: #b48b2e;
+    border: 1px solid #ced4da;;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 7px 9px;
+}
+
+.custom-rooms-box button:hover {
+    background-color: #b48c2ed3;
+}

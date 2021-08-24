@@ -1,0 +1,47 @@
+{% extends "asgard/layout.html" %}
+{% load static %}
+{% block body %}
+
+<section class="">
+    <div class="py-5 custom-rooms-header">
+        <h1 class="m-0 px-3 text-center">Room Selection</h1>
+    </div>
+    
+    <div class="m-5 d-flex flex-wrap custom-rooms-main">
+    {% if rooms|length == 0 %}
+        <div class="p-5 m-5 text-center alert alert-warning" role="alert">
+            <h1>There are no available rooms between these dates</h1>
+        </div>
+    {% else %}
+    
+        {% for data in rooms %}
+            <div class="mb-5 d-flex flex-column justify-content-between custom-rooms-box" style="width: 320px;">
+                <div class="custom-rooms-box-header">
+                    <a href="{% url 'room' data.id data.url_slug %}">
+                        {% for i in data.media_set.all %}
+                            <img src="{% static i.image_main %}" alt="{{ data.room_name }}" width="100%">
+                        {% endfor %}                    
+                    </a>
+                </div>
+                <div>
+                    <h1 class="my-3 pb-3 text-center"><a href="{% url 'room' data.id data.url_slug %}">{{ data.room_name }}</a></h1>
+                    <ul class="list-unstyled">
+                        <li><i class="far fa-check-square"></i> <span class="fw-bold mx-3">Bed:</span><span class="fst-italic">{{ data.bed_type }}</span></li>
+                        <li><i class="far fa-check-square"></i> <span class="fw-bold mx-3">Max People:</span><span class="fst-italic">{{ data.max_people }}</span></li>
+                        <li><i class="far fa-check-square"></i> <span class="fw-bold mx-3">View:</span><span class="fst-italic">{{ data.view }}</span></li>
+                        <li><i class="far fa-check-square"></i> <span class="fw-bold mx-3">Wifi:</span><span class="fst-italic">Yes</span></li>
+                    </ul>
+                    <h2 class="mb-4"><span class="fst-italic">Start From </span><span class="" style="color: #74b7d3;">${{ data.adult_price }} / Night</span></h2>
+                    <a href="{% url 'room' data.id data.url_slug %}" >
+                        <button>Check Details <i class="fas fa-long-arrow-alt-right"></i></button>
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+
+    {% endif %}    
+    </div>
+
+</section>
+
+{% endblock %}

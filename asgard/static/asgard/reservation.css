@@ -1,0 +1,99 @@
+.reservation-header {
+    background-image: url('./img/reservation00.jpg');
+    background-size: cover;
+    background-position-y: center;
+    background-repeat: no-repeat;
+    color: #fff;
+}
+
+.reservation-header h1 {
+    text-transform: uppercase;
+    letter-spacing: 10px;
+    text-shadow: 3px 2px 1px rgba(0,0,0,0.6) !important;
+}
+
+/* Your reservation */
+
+.your-reservation {
+    color: #fff;
+    background-color: #c7a965;
+    border-radius: 5px;
+    max-width: 300px;
+}
+
+.your-reservation h1 {
+    font-size: 20px;
+    letter-spacing: 1px;
+}
+
+.your-reservation ul {
+    margin: 0;
+    padding: 0;
+}
+
+.price-breakdown {
+    font-size: 15px;
+    color: #f7edd4;
+}
+
+@media (max-width: 768px) {
+    .reservation-summary {
+        display: flex;
+        justify-content: center;
+    }
+
+    .your-reservation {
+        width: 100%;
+    }
+}
+
+
+/* Contact Info */
+
+.contact {
+    color: #808080;
+    font-style: italic;
+}
+
+.form-control,
+.form-control:focus,
+.form-control:active {
+    background-color: #f5f5f5;
+    border-radius: 0;
+}
+
+.book-now,
+.book-now:focus {
+    color: #fff;
+    background-color: #b48b2e !important;
+    border: none;
+    border-radius: 25px;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    line-height: 2rem;
+    width: 300px;
+    padding: .375rem .75rem;
+}
+
+.book-now:hover {
+    background-color: #b48c2ed3 !important;
+}
+
+.pay-now,
+.pay-now:focus {
+    color: #fff;
+    background-color: #4a87a2 !important;
+    border: none;
+    border-radius: 25px;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    line-height: 2rem;
+    width: 300px;
+    padding: .375rem .75rem;
+}
+
+.pay-now:hover {
+    background-color: #81bad3 !important;
+}

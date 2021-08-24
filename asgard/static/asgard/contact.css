@@ -1,0 +1,27 @@
+.custom-contact {
+    color: #808080;
+}
+
+.custom-contact h1 {
+    color: #4e4e4e;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.custom-contact p {
+    line-height: 1.7;
+}
+
+.custom-contact textarea {
+    overflow: auto;
+    width: 100%;
+    border: 1px solid #d4d4d4;
+    outline: none;
+    box-shadow: none;
+}
+
+.custom-contact textarea:focus {
+    box-shadow: none;
+    outline: none;
+}

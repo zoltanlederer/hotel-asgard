@@ -1,0 +1,56 @@
+.aboutus-header {
+    background-image: url('./img/aboutus.jpg');
+    background-size: cover;
+    background-position-y: center;
+    background-repeat: no-repeat;
+    color: #fff;
+}
+
+.aboutus-header h1 {
+    text-transform: uppercase;
+    letter-spacing: 10px;
+    text-shadow: 3px 2px 1px rgba(0,0,0,0.6) !important;
+}
+
+.aboutus-divider {
+    width: 64px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: #b48b2e;
+}
+
+.aboutus-divider-middle {
+    width: 75%;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: #b48b2e;
+    margin: 0 auto;
+}
+
+.about h1 {
+    color: #292929;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 24px;
+}
+
+.about p {
+    color: #909090;
+    line-height: 1.7;
+}
+
+.aboutus-img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.font-icon {
+    font-size: 18px;
+}
+
+@media (max-width: 992px) {
+    .aboutus-bottom-container {
+        width: 100%;
+    }
+}

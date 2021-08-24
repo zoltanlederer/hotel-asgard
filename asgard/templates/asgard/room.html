@@ -1,0 +1,278 @@
+{% extends "asgard/layout.html" %}
+{% load static %}
+{% block body %}
+
+<section class="">
+    <div class="row px-0 mx-0 mb-2 flex-column">
+        <div class="py-5 room-header">
+            <h1 class="m-0 px-3 text-center">Room</h1>
+        </div>
+
+        <!-- Reservation -->
+        <div class="navbar-expand-md px-0 reservation">
+            <button style="box-shadow: none;" class="navbar-toggler reservation-toogle-btn" type="button" data-bs-toggle="collapse" data-bs-target="#reservationCollapse" aria-controls="reservationCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span>Reserve</span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="reservationCollapse">
+                <div class="col px-0 mt-0 pb-3" style="background-color: #fff;">
+                    <form action="{% url 'reservation' room.id room.url_slug %}" method="post" data-roomid="{{  room.id }}" data-urlslug="{{ room.url_slug }}" class="px-2 pt-1 pb-2 pre-reservation-form" style="background-color: #b48b2e;">
+                        {% csrf_token %}
+                        <div class="row justify-content-center align-items-end">
+                            <div class="col-md-3">
+                                <label for="input-checkin">&nbsp;Check In</label>
+                                <div class="input-group">
+                                    <input type="date" id="input-checkin" name="checkin" class="form-control">
+                                    <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="input-checkout">&nbsp;Check Out</label>
+                                <div class="input-group">
+                                    <input type="date" id="input-checkout" name="checkout" class="form-control">
+                                    <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <label for="input-adults">&nbsp;Adults</label>
+                                <select name="adults" id="input-adult" class="form-select form-control">
+                                    <option value="0">0</option><option value="1" selected>1</option>
+                                    <option value="2">2</option><option value="3">3</option>
+                                    <option value="4">4</option><option value="5">5</option>
+                                    <option value="6">6</option><option value="7">7</option>
+                                    <option value="8">8</option><option value="9">9</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <label for="input-children">&nbsp;Children</label>
+                                <select name="children" id="input-children" class="form-select form-control">                                     
+                                    <option value="0" selected>0</option><option value="1">1</option>
+                                    <option value="2">2</option><option value="3">3</option>
+                                    <option value="4">4</option><option value="5">5</option>
+                                    <option value="6">6</option><option value="7">7</option>
+                                    <option value="8">8</option><option value="9">9</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <span>&nbsp;</span>
+                                <input type="submit" id="pre-reserve-btn" class="form-control fst-italic" value="Reserve">
+                            </div>                            
+                        </div>                 
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Room Information -->
+        <div class="col mt-4 px-4">
+            <!-- Room Photo Galley -->
+            <div class="room-details-gallery-container">
+                <div class="room-details-gallery-top">
+                    {% for i in room.media_set.all %}
+                    <div class="">
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#image_main">
+                            <img src="{% static i.image_main %}" alt="{{ room.room_name }}">    
+                        </a>                        
+                    </div>
+                    {% endfor %}   
+                </div>
+
+                <div class="room-details-gallery-bottom">
+                {% for i in room.media_set.all %}
+                    <div class="">
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#image01">
+                            <img src="{% static i.image_1 %}" alt="{{ room.room_name }}">
+                        </a>                        
+                    </div>                            
+                    <div class="">
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#image02">
+                            <img src="{% static i.image_2 %}" alt="{{ room.room_name }}">
+                        </a> 
+                    </div>
+                    <div class="">
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#image03">
+                            <img src="{% static i.image_3 %}" alt="{{ room.room_name }}">
+                        </a> 
+                    </div>
+                    <div class="">
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#image04">
+                            <img src="{% static i.image_4 %}" alt="{{ room.room_name }}">
+                        </a> 
+                    </div>
+                {% endfor %} 
+                
+                </div>
+            </div>
+
+            <!-- Modal -->
+            {% for i in room.media_set.all %}
+            <div class="modal fade" id="image_main" tabindex="-1" aria-labelledby="image_mainLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <img src="{% static i.image_main %}" alt="{{ room.room_name }}" class="modal-img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="image01" tabindex="-1" aria-labelledby="image01Label" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <img src="{% static i.image_1 %}" alt="{{ room.room_name }}" class="modal-img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="image02" tabindex="-1" aria-labelledby="image02Label" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <img src="{% static i.image_2 %}" alt="{{ room.room_name }}" class="modal-img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="image03" tabindex="-1" aria-labelledby="image03Label" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <img src="{% static i.image_3 %}" alt="{{ room.room_name }}" class="modal-img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="image04" tabindex="-1" aria-labelledby="image04Label" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <img src="{% static i.image_4 %}" alt="{{ room.room_name }}" class="modal-img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {% endfor %} 
+            
+            <!-- Room Specs -->
+            <div class="d-flex justify-content-between my-4 room-specs">                
+                <h1> {{ room.room_name }}</h1>
+                <h2 class="mb-4"><span class="fst-italic fw-bold">Start From </span><span class="" style="color: #74b7d3;">${{ room.adult_price }} / Night</span></h2>
+            </div>
+
+            <div class="d-flex justify-content-between my-4 room-specs">
+                <ul class="list-unstyled text-uppercase text-center d-flex justify-content-around" style="width: 100%; font-size: 18px;">
+                    <li><i class="fas fa-bed"></i><br><span style="font-size: 16px;">{{ room.bed_type }}</span></li>
+                    <li><i class="fas fa-user-friends"></i><br><span style="font-size: 16px;">{{ room.max_people }}</span></li>
+                    <li><i class="far fa-eye"></i><br><span style="font-size: 16px;">{{ room.view }}</span></li>
+                    <li><i class="fas fa-wifi"></i><br><span style="font-size: 16px;">Yes</span></li>
+                    <li><i class="fas fa-shuttle-van"></i><br><span style="font-size: 16px;">Yes</span></li>
+                </ul>
+            </div>
+
+            <!-- Room Details -->
+            <div class="my-4 room-specs">
+                <h3>Room Details</h3>
+                <p>
+                    Donec sed odio dui. Donec sed odio dui. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Curabitur blandit tempus porttitor. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Etiam porta sem malesuada magna mollis euismod. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Etiam porta sem malesuada magna mollis euismod. Maecenas sed diam eget risus varius blandit sit amet non magna.Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
+                </p>
+            </div>
+
+            <div class="my-4 d-flex justify-content-between room-specs">
+                <div class="fw-bold room-specs-table">
+                    <p>The Space</p>
+                </div>
+                <div class="room-specs-table">
+                    <ul class="list-unstyled">
+                        <li>Accommodates: <span class="fw-bold">{{ room.accommodates }}</span></li>
+                        <li>Bathrooms: <span class="fw-bold">{{ room.bathrooms }}</span></li>
+                        <li>Bedroom: <span class="fw-bold">{{ room.bedroom }}</span></li>
+                        <li>Beds: <span class="fw-bold">{{ room.beds }}</span></li>
+                    </ul>
+                </div>
+                <div class="room-specs-table">
+                    <ul class="list-unstyled">
+                        <li>Check In: <span class="fw-bold">02:00 PM</span></li>
+                        <li>Check Out: <span class="fw-bold">12:00 PM</span></li>
+                        <li>Property Type: <span class="fw-bold">Apartment / Room</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="my-4 d-flex justify-content-between room-specs">
+                <div class="fw-bold room-specs-table">
+                    <p>Amenities</p>
+                </div>
+                <div class="room-specs-table">
+                    <ul class="list-unstyled">
+                        <li>Wifi: <span class="fw-bold">Free</span></li>
+                        <li>Elevator: <span class="fw-bold">No</span></li>
+                        <li>Hair Dryer: <span class="fw-bold">Yes</span></li>
+                        <li>Air Conditioning: <span class="fw-bold">Yes</span></li>
+                    </ul>
+                </div>
+                <div class="room-specs-table">
+                    <ul class="list-unstyled">
+                        <li>Parking: <span class="fw-bold">$20 / Car / Night</span></li>
+                        <li>Safety Box: <span class="fw-bold">Yes</span></li>
+                        <li>Television: <span class="fw-bold">Yes</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="my-4 d-flex justify-content-between room-specs">
+                <div class="fw-bold room-specs-table">
+                    <p>Prices</p>
+                </div>
+                <div class="room-specs-table">
+                    <ul class="list-unstyled">
+                        <li>Extra people: <span class="fw-bold">From $50 / night after 2 guests</span></li>
+                        <li>Cleaning Fee: <span class="fw-bold">$17</span></li>
+                    </ul>
+                </div>
+                <div class="room-specs-table">
+                    <ul class="list-unstyled">
+                        <li>Security Deposit: <span class="fw-bold">$50</span></li>
+                        <li>Weekly Discount: <span class="fw-bold">10%</span></li>
+                    </ul>
+                </div>
+            </div>
+    
+        </div>
+
+    </div>
+</section>
+
+
+<!-- Availability Modal -->
+<a href="#" data-bs-toggle="modal" data-bs-target="#reserved" id="nonavailable" style="display: none;"></a>  
+
+<div class="modal fade" id="reserved" tabindex="-1" aria-labelledby="reservedLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                Sorry this room is not available on this date.
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

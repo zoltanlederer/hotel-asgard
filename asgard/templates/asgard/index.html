@@ -1,0 +1,301 @@
+{% extends "asgard/layout.html" %}
+{% load static %}
+{% block body %}
+
+<section class="">
+    <!-- Main page image -->
+    <div class="main-img-container text-center">        
+        <h1>Welcome To</h1>
+        <div class="my-4 main-img-container-divider"></div>
+        <h2>Hotel Asgard</h2>
+        <h2>
+            <i class="fas fa-star"></i>&nbsp;
+            <i class="fas fa-star"></i>&nbsp;
+            <i class="fas fa-star"></i>&nbsp;
+            <i class="fas fa-star"></i>&nbsp;
+            <i class="fas fa-star"></i>
+        </h2>
+    </div>
+    <!-- Hotel Rooms -->
+    <div class="p-3 mb-2 custom-main-hotel-rooms">
+        <h1 class="text-center mt-4">Hotel Asgard's Rooms</h1>
+        <h5 class="text-center fst-italic mb-5"><a href="{% url 'rooms' %}">View All Rooms <i class="fas fa-long-arrow-alt-right"></i></a></h5>               
+        <div>
+            <ul class="list-unstyled d-flex flex-wrap justify-content-center">
+                <li class="px-3">
+                    <figure>
+                        <div class="overflow-hidden"><a href="{% url 'room' '1' 'standard-room-one-king-bed' %}"><img src="{% static 'asgard/img/room1.jpg' %}" alt="Standard Room - One King Bed"></a></div>
+                        <figcaption class="mt-2 text-center">
+                            <a href="{% url 'room' '1' 'standard-room-one-king-bed' %}" class="link-dark" style="text-decoration: none;"><span class="text-uppercase">Standard Room - One King Bed</span></a>
+                         </figcaption>
+                    </figure> 
+                </li>
+                <li class="px-3">
+                    <figure>
+                        <div class="overflow-hidden"><a href="{% url 'room' '9' 'deluxe-room-two-double-beds' %}"><img src="{% static 'asgard/img/room2.jpg' %}" alt="Deluxe Room - Two Double Beds"></a></div>
+                        <figcaption class="mt-2 text-center">
+                            <a href="{% url 'room' '9' 'deluxe-room-two-double-beds' %}" class="link-dark" style="text-decoration: none;"><span class="text-uppercase">Deluxe Room - Two Double Beds</span></a>
+                         </figcaption>
+                    </figure>
+                </li>
+                <li class="px-3">
+                    <figure>
+                        <div class="overflow-hidden"><a href="{% url 'room' '3' 'junior-suite-one-single-bed' %}"><img src="{% static 'asgard/img/room3.jpg' %}" alt="Junior Suite - One Single Bed"></a></div>
+                        <figcaption class="mt-2 text-center">
+                            <a href="{% url 'room' '3' 'junior-suite-one-single-bed' %}" class="link-dark" style="text-decoration: none;"><span class="text-uppercase">Junior Suite - One Single Bed</span></a>
+                        </figcaption>
+                    </figure>
+                </li>
+                <li class="px-3">
+                    <figure>
+                        <div class="overflow-hidden"><a href="{% url 'room' '8' 'premium-room-two-single-beds' %}"><img src="{% static 'asgard/img/room4.jpg' %}" alt="Premium Room - Two Single Beds"></a></div>
+                        <figcaption class="mt-2 text-center">
+                            <a href="{% url 'room' '8' 'premium-room-two-single-beds' %}" class="link-dark" style="text-decoration: none;"><span class="text-uppercase">Premium Room - Two Single Beds</span></a>
+                        </figcaption>
+                    </figure>
+                </li>
+            </ul>
+        </div>
+   </div>
+    <!-- Check Availability -->
+    <div class="pt-3 pb-5 mb-2 custom-main-hotel-availability">
+        <h1 class="text-center mt-4 mb-5" style="color: #b48b2e; font-size: 1.6rem;">Check Availability</h1>
+        <form action="{% url 'available' %}" method="post" class="search-form">
+            {% csrf_token %}
+            <div class="row g-3 px-3 justify-content-center align-items-end">
+                <div class="col-md-3">
+                    <label for="input-checkin">&nbsp;Check In</label>
+                    <div class="input-group">
+                        <input type="date" id="input-checkin" name="checkin" class="form-control">
+                        <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <label for="input-checkout">&nbsp;Check Out</label>
+                    <div class="input-group">
+                        <input type="date" id="input-checkout" name="checkout" class="form-control">
+                        <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <label for="input-adults">&nbsp;Adults</label>
+                    <select name="adults" id="input-adult" class="form-select form-control">
+                        <option value="0">0</option><option value="1" selected>1</option>
+                        <option value="2">2</option><option value="3">3</option>
+                        <option value="4">4</option><option value="5">5</option>
+                        <option value="6">6</option><option value="7">7</option>
+                        <option value="8">8</option><option value="9">9</option>
+                    </select>
+                </div>
+                <div class="col-md-1">
+                    <label for="input-children">&nbsp;Children</label>
+                    <select name="children" id="input-children" class="form-select form-control">                                        
+                        <option value="0" selected>0</option><option value="1">1</option>
+                        <option value="2">2</option><option value="3">3</option>
+                        <option value="4">4</option><option value="5">5</option>
+                        <option value="6">6</option><option value="7">7</option>
+                        <option value="8">8</option><option value="9">9</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <input type="submit" id="checkAvailability" class="form-control fst-italic" value="Check Availability">
+                </div>                            
+            </div>                 
+        </form>
+    </div>
+    <!-- Gallery / Video Tour -->
+    <div class="row p-3 mb-2 custom-main-hotel-gallery">
+        <div class="col-md-6">
+            <h2>Gallery</h2>
+            <div class="custom-main-hotel-gallery-divider mb-4"></div>
+            <div>
+                <ul class="list-unstyled d-flex flex-wrap justify-content-center">
+                    <li class="p-3">
+                        <div class="overflow-hidden">
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#image01">
+                                <img src="{% static 'asgard/img/home-img-01.jpg' %}" alt="Hotel Asgard" class="gallery-img">    
+                            </a>                            
+                        </div>
+                    </li>
+                    <li class="p-3">
+                        <div class="overflow-hidden">
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#image02">
+                                <img src="{% static 'asgard/img/home-img-02.jpg' %}" alt="Hotel Asgard" class="gallery-img">    
+                            </a>                            
+                        </div>
+                    </li>
+                    <li class="p-3">
+                        <div class="overflow-hidden">
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#image03">
+                                <img src="{% static 'asgard/img/home-img-03.jpg' %}" alt="Hotel Asgard" class="gallery-img">    
+                            </a>                            
+                        </div>
+                    </li>
+                    <li class="p-3">
+                        <div class="overflow-hidden">
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#image04">
+                                <img src="{% static 'asgard/img/home-img-04.jpg' %}" alt="Hotel Asgard" class="gallery-img">    
+                            </a>                            
+                        </div>
+                    </li>
+                    <li class="p-3">
+                        <div class="overflow-hidden">
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#image05">
+                                <img src="{% static 'asgard/img/home-img-05.jpg' %}" alt="Hotel Asgard" class="gallery-img">    
+                            </a>                            
+                        </div>
+                    </li>
+                    <li class="p-3">
+                        <div class="overflow-hidden">
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#image06">
+                                <img src="{% static 'asgard/img/home-img-06.jpg' %}" alt="Hotel Asgard" class="gallery-img">    
+                            </a>                            
+                        </div>
+                    </li>
+                    <li class="p-3">
+                        <div class="overflow-hidden">
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#image07">
+                                <img src="{% static 'asgard/img/home-img-07.jpg' %}" alt="Hotel Asgard" class="gallery-img">    
+                            </a>                            
+                        </div>
+                    </li>
+                    <li class="p-3">
+                        <div class="overflow-hidden">
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#image08">
+                                <img src="{% static 'asgard/img/home-img-08.jpg' %}" alt="Hotel Asgard" class="gallery-img">    
+                            </a>                            
+                        </div>
+                    </li>
+                    <li class="p-3">
+                        <div class="overflow-hidden">
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#image09">
+                                <img src="{% static 'asgard/img/home-img-09.jpg' %}" alt="Hotel Asgard" class="gallery-img">    
+                            </a>                            
+                        </div>
+                    </li>
+
+                    <!-- Modal -->                    
+                    <div class="modal fade" id="image01" tabindex="-1" aria-labelledby="image01Label" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <img src="{% static 'asgard/img/home-img-01.jpg' %}" class="gallery-modal-img" alt="Hotel Asgard"> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="image02" tabindex="-1" aria-labelledby="image02Label" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <img src="{% static 'asgard/img/home-img-02.jpg' %}" class="gallery-modal-img" alt="Hotel Asgard"> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="image03" tabindex="-1" aria-labelledby="image03Label" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <img src="{% static 'asgard/img/home-img-03.jpg' %}" class="gallery-modal-img" alt="Hotel Asgard"> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="image04" tabindex="-1" aria-labelledby="image04Label" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <img src="{% static 'asgard/img/home-img-04.jpg' %}" class="gallery-modal-img" alt="Hotel Asgard"> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="image05" tabindex="-1" aria-labelledby="image05Label" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <img src="{% static 'asgard/img/home-img-05.jpg' %}" class="gallery-modal-img" alt="Hotel Asgard"> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="image06" tabindex="-1" aria-labelledby="image06Label" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <img src="{% static 'asgard/img/home-img-06.jpg' %}" class="gallery-modal-img" alt="Hotel Asgard"> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="image07" tabindex="-1" aria-labelledby="image07Label" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <img src="{% static 'asgard/img/home-img-07.jpg' %}" class="gallery-modal-img" alt="Hotel Asgard"> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="image08" tabindex="-1" aria-labelledby="image08Label" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <img src="{% static 'asgard/img/home-img-08.jpg' %}" class="gallery-modal-img" alt="Hotel Asgard"> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="image09" tabindex="-1" aria-labelledby="image09Label" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <img src="{% static 'asgard/img/home-img-09.jpg' %}" class="gallery-modal-img" alt="Hotel Asgard"> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h2>Video Tour</h2>
+            <div class="custom-main-hotel-gallery-divider mb-4"></div>
+                <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/56815898" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+                <h5 class="mt-4 mb-3">Sollicitudin Sit Inceptos</h5>
+                <p>
+                    Donec sed odio dui. Maecenas faucibus mollis interdum. Aenean lacinia bibendum nulla sed consectetur. Donec sed odio dui. Maecenas faucibus mollis interdum. Donec sed odio dui. Maecenas faucibus mollis interdum. Aenean lacinia bibendum nulla sed consectetur. Donec sed odio dui. Maecenas faucibus mollis interdum.
+                </p>
+        </div>
+   </div>
+</section>
+
+{% endblock %}
